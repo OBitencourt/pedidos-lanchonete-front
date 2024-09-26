@@ -6,11 +6,12 @@ import {
 
 
 import TemplatePage from './templates/Page';
+import TemplateClean from './templates/Clean';
 import TemplateDefault from './templates/Default'
 
-import Login from './pages/Login';
+import Painel from './pages/Painel';
 
-function App() {
+const App = () => {
   return (
     <>
       <Router>
@@ -19,10 +20,10 @@ function App() {
             <Route path="/admin">
               
             </Route>
-          </TemplateDefault>
             <Route path="/">
-              <TemplatePage title='Admin Login' Component={Login} />
+              <TemplatePage title='Admin Painel' Component={Painel} />
             </Route>
+          </TemplateDefault>
         </Switch>
       </Router>
     </>
