@@ -4,7 +4,9 @@ const TemplatePage = ({title, Component}) => {
     return (
 
         <>
-            <Typography sx={{mt: 5}}variant='h2'>{title}</Typography>
+            <Typography sx={{mt: 5}} variant='h2'>
+                {title}
+            </Typography>
             <Component />
         </>
     )

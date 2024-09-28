@@ -10,20 +10,25 @@ import TemplateClean from './templates/Clean';
 import TemplateDefault from './templates/Default'
 
 import Painel from './pages/Painel';
+import ListProducts from './pages/products/ListProducts'
 
 const App = () => {
   return (
     <>
       <Router>
         <Switch>
-          <TemplateDefault>
-            <Route path="/admin">
-              
-            </Route>
-            <Route path="/">
+          <Route path="/products">
+            <TemplateDefault>
+              <TemplatePage title='Products' Component={ListProducts} />
+            </TemplateDefault>
+          </Route>
+
+          {/* Route for the main page (Admin Painel) */}
+          <Route path="/">
+            <TemplateDefault>
               <TemplatePage title='Admin Painel' Component={Painel} />
-            </Route>
-          </TemplateDefault>
+            </TemplateDefault>
+          </Route>
         </Switch>
       </Router>
     </>

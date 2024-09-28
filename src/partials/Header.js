@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+import { useHistory } from 'react-router-dom';
+
 
 import {
     Typography,
@@ -27,7 +29,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const Header = () => {
 
-
+  const history = useHistory()
 
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -39,6 +41,12 @@ const Header = () => {
     
   }
 
+  const handleMenuClick = (route) => {
+    history.push(route)
+    handleToggleMenu()
+    window.location.reload()
+  }
+
   const renderMenu = () => {
 
     switch (selectedButton) {
@@ -46,19 +54,19 @@ const Header = () => {
             
             return (
                 <List>
-                    <ListItem button > 
+                    <ListItem button onClick={() => handleMenuClick('/')}> 
                         <ListItemIcon>
                             <HomeIcon />
                         </ListItemIcon>
                         <ListItemText>Home</ListItemText>         
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button onClick={() => handleMenuClick('/products')}>
                         <ListItemIcon>
                             <InventoryIcon />
                         </ListItemIcon>
                         <ListItemText>Products</ListItemText>         
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button onClick={() => handleMenuClick('/products/add')}>
                         <ListItemIcon>
                             <AddIcon />
                         </ListItemIcon>
@@ -72,19 +80,19 @@ const Header = () => {
 
             return (
                 <List>
-                    <ListItem button > 
+                    <ListItem button onClick={() => handleMenuClick('/')}> 
                         <ListItemIcon>
                             <HomeIcon />
                         </ListItemIcon>
                         <ListItemText>Home</ListItemText>         
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button onClick={() => handleMenuClick('/customers')}>
                         <ListItemIcon>
                             <PersonIcon />
                         </ListItemIcon>
                         <ListItemText>Customers</ListItemText>         
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button onClick={() => handleMenuClick('/customers/add')}>
                         <ListItemIcon>
                             <PersonAddIcon />
                         </ListItemIcon>
@@ -97,13 +105,13 @@ const Header = () => {
 
             return (
                 <List>
-                    <ListItem button > 
+                    <ListItem button onClick={() => handleMenuClick('/')}> 
                         <ListItemIcon>
                             <HomeIcon />
                         </ListItemIcon>
                         <ListItemText>Home</ListItemText>         
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button onClick={() => handleMenuClick('/orders')}>
                         <ListItemIcon>
                             <ShoppingCartIcon />
                         </ListItemIcon>
