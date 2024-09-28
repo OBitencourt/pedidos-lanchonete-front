@@ -13,6 +13,8 @@ const ProductsCard = ({
     /*id*/
     name,
     price,
+    id,
+    onRemoveProduct
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -37,7 +39,7 @@ const ProductsCard = ({
         </CardContent>
       </>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button onClick={() => onRemoveProduct(id)} size="small" color="primary">
           Delete Product
         </Button>
         <Button size="small" color="primary">
