@@ -25,7 +25,9 @@ const ListProducts = () => {
         axios.delete(`http://localhost:8080/lanchonete/products/${id}`)
             .then(response => {
                 console.log('product removed successfully', response)
-                window.location.reload()
+                const newProductsState = products.filter(product => product._id !== id)
+
+                setProducts(newProductsState)
             })
     }
 
