@@ -3,7 +3,10 @@ import React, {useState} from 'react'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+import Toasty from '../../components/Toasty'
+
 import axios from 'axios'
+
 
 const AddProduct = () => {
 
@@ -11,6 +14,8 @@ const AddProduct = () => {
         name: '',
         price: ''
     })
+
+    const [openToasty, setOpenToasty] = useState(false)
 
     const handleOnInputChange = (e) => {
         const {name, value} = e.target
@@ -28,6 +33,7 @@ const AddProduct = () => {
         axios.post('http://localhost:8080/lanchonete/products', form)
             .then(response => {
                 console.log('ok', response)
+                setOpenToasty(true)
             })
 
     }
@@ -60,6 +66,14 @@ const AddProduct = () => {
                     Send
                 </Button>
             </div>
+            <Toasty 
+                open={openToasty}
+                onClose={() => {
+                    setOpenToasty(false)
+                }}
+                text='The product was sent successfully!'
+                severity='success'
+            />
         </>
     )
 }
