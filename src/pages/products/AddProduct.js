@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Toasty from '../../components/Toasty'
 
 import axios from 'axios'
-
+import Loading from '../../components/Loading'
 
 const AddProduct = () => {
 
@@ -15,6 +15,7 @@ const AddProduct = () => {
         price: ''
     })
 
+    const [isLoading, setIsLoading] = useState(false)
     const [openToasty, setOpenToasty] = useState(false)
 
     const handleOnInputChange = (e) => {
@@ -27,6 +28,7 @@ const AddProduct = () => {
     }
     
     const handleOnSendButton = () => {
+        setIsLoading(true)
 
         console.log('Dados que serão enviados:', form);
 
@@ -34,6 +36,7 @@ const AddProduct = () => {
             .then(response => {
                 console.log('ok', response)
                 setOpenToasty(true)
+                setIsLoading(false)
             })
 
     }
@@ -63,7 +66,11 @@ const AddProduct = () => {
                     variant='contained'
                     onClick={handleOnSendButton}
                 >
-                    Send
+                    {
+                        isLoading 
+                        ? <Loading />
+                        : 'Send'
+                    }
                 </Button>
             </div>
             <Toasty 

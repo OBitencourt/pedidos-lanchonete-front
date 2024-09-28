@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { purple, deepPurple } from '@mui/material/colors';
+import { purple, deepPurple, lightBlue } from '@mui/material/colors';
 
 
 const theme = createTheme({
   palette: {
     primary: deepPurple,
-    secondary: purple,
+    secondary: lightBlue,
   },
 })
 
