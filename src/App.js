@@ -6,7 +6,7 @@ import {
 
 
 import TemplatePage from './templates/Page';
-import TemplateClean from './templates/Clean';
+// import TemplateClean from './templates/Clean';
 import TemplateDefault from './templates/Default'
 
 import Painel from './pages/Painel';
