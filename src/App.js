@@ -17,12 +17,19 @@ import EditProduct from './pages/products/EditProduct';
 
 import ListCustomers from './pages/customers/ListCustomers';
 import AddCustomer from './pages/customers/AddCustomer'
+import EditCustomer from './pages/customers/EditCustomer';
 
 const App = () => {
   return (
     <>
       <Router>
-        <Switch>       
+        <Switch>
+          <Route path="/customers/edit/:id">
+            <TemplateDefault>
+              <TemplatePage title='Edit Customer' Component={EditCustomer} />
+            </TemplateDefault>
+          </Route>
+
           <Route path="/customers/add">
             <TemplateDefault>
               <TemplatePage title='Add Customer' Component={AddCustomer} />

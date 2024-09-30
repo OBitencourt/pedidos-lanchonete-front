@@ -6,10 +6,14 @@ import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import { useEffect , useState} from 'react';
 
+import { useHistory } from 'react-router-dom';
+
+
 const ListCustomers = () => {
 
     const [users, setUsers] = useState([])
-    
+    const history = useHistory()
+
 
     useEffect(() => {
         axios.get('http://localhost:8080/lanchonete/customers')
@@ -31,6 +35,11 @@ const ListCustomers = () => {
             })
     }
 
+    const handleEditCustomer = id => {
+        history.push(`/customers/edit/${id}`)
+        window.location.reload()
+    }
+
     return (
         <>
             <Grid container>
@@ -44,6 +53,7 @@ const ListCustomers = () => {
                                 tel={user.tel}
                                 adress={user.adress}
                                 onRemoveCustomer={handleRemoveCustomer}
+                                onEditCustomer={handleEditCustomer}
                             />
                         </Grid>
                     ))

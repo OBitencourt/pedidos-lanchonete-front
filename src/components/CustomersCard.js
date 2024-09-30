@@ -24,7 +24,8 @@ const CustomersCard = ({
     tel,
     adress,
     id,
-    onRemoveCustomer
+    onRemoveCustomer,
+    onEditCustomer
 }) => {
 
   const [open, setOpen] = useState(false)
@@ -38,6 +39,10 @@ const CustomersCard = ({
     handleToggleModal()
   }
  
+  const handleEditCustomer = id => {
+    onEditCustomer(id)
+  }
+
   return (
     <>
       <Card sx={{ maxWidth: 345 }}>
@@ -62,7 +67,7 @@ const CustomersCard = ({
           <IconButton onClick={handleToggleModal} sx={{mr: 2}} aria-label="add to favorites">
             <DeleteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton onClick={() => handleEditCustomer(id)} aria-label="share">
             <EditIcon />
           </IconButton>
           
