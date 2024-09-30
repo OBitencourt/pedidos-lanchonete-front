@@ -40,8 +40,8 @@ const CustomersCard = ({
       
       <CardContent>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          <div>{tel}</div>
-          <div>{adress}</div>
+          <div><b>Phone:</b> {tel}</div>
+          <div><b>Adress:</b> {adress}</div>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

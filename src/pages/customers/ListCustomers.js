@@ -25,7 +25,7 @@ const ListCustomers = () => {
             <Grid container>
                 {
                     users.map(user => (
-                        <Grid sx={{mt: 2}} item xs={12} md={6} lg={4}>
+                        <Grid sx={{mt: 2, mb: 2}} item xs={12} md={6} lg={4}>
                             <CustomersCard 
                                 id={user._id}
                                 name={user.name}
