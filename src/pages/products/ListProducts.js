@@ -40,9 +40,7 @@ const ListProducts = () => {
         window.location.reload()
     }
 
-    console.log(products)
-    console.log(products)
-
+    
     return (
         <>
             <Grid container>

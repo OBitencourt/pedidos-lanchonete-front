@@ -15,11 +15,20 @@ import ListProducts from './pages/products/ListProducts'
 import AddProducts from './pages/products/AddProduct'
 import EditProduct from './pages/products/EditProduct';
 
+import ListCustomers from './pages/customers/ListCustomers';
+
 const App = () => {
   return (
     <>
       <Router>
-        <Switch>          
+        <Switch>       
+
+
+          <Route path="/customers">
+            <TemplateDefault>
+              <TemplatePage title='Customers' Component={ListCustomers} />
+            </TemplateDefault>
+          </Route>
           <Route path="/products/add">
             <TemplateDefault>
               <TemplatePage title='Add Product' Component={AddProducts} />
