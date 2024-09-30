@@ -15,6 +15,9 @@ import Toasty from '../../components/Toasty'
 
 const EditCustomer = () => {
 
+    const [isLoading, setIsLoading] = useState(false)
+    const [openToasty, setOpenToasty] = useState(false)
+
     const { id } = useParams()
 
     const [form, setForm] = useState({
@@ -81,7 +84,8 @@ const EditCustomer = () => {
     }
 
     const handleSubmitButton = () => {
-        
+        setIsLoading(true)
+
         let hasError = false
 
         const newFormErrorState = {
@@ -136,9 +140,10 @@ const EditCustomer = () => {
             adress: form.adress.value
 
         })
-            .then(response => {
-                console.log(response)
-            })
+        .then(response => {
+            console.log(response)
+            setIsLoading(false)
+        })
     }
 
     return (
@@ -197,9 +202,21 @@ const EditCustomer = () => {
                     sx={{mt: 2}}
                     onClick={handleSubmitButton}
                 >
-                    Send
+                    {
+                        isLoading 
+                        ? <Loading />
+                        : 'Send'
+                    }
                 </Button>
             </div>
+            <Toasty 
+                open={openToasty}
+                onClose={() => {
+                    setOpenToasty(false)
+                }}
+                severity='success'
+                text='The customer has been edited successfully!'
+            />
         </>
     )
 }
