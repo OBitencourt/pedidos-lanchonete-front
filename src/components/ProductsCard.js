@@ -16,7 +16,8 @@ const ProductsCard = ({
     name,
     price,
     id,
-    onRemoveProduct
+    onRemoveProduct,
+    onEditProduct
 }) => {
   
   const [open, setOpen] = useState(false)
@@ -30,7 +31,10 @@ const ProductsCard = ({
     handleToggleModal()
   }
   
-  
+  const handleEditProduct = id => {
+    onEditProduct(id)
+  }
+
   return (
     <>
     
@@ -59,7 +63,7 @@ const ProductsCard = ({
           <Button onClick={() => handleToggleModal()} size="small" color="primary">
             Delete Product
           </Button>
-          <Button size="small" color="primary">
+          <Button onClick={() => handleEditProduct(id)} size="small" color="primary">
             Edit Product
           </Button>
         </CardActions>

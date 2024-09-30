@@ -6,7 +6,11 @@ import ProductsCard from '../../components/ProductsCard'
 
 import Grid from '@mui/material/Grid';
 
+import { useHistory } from 'react-router-dom';
+
 const ListProducts = () => {
+
+    const history = useHistory()
 
     const [products, setProducts] = useState([])
 
@@ -31,6 +35,12 @@ const ListProducts = () => {
             })
     }
 
+    const handleEditProduct = id => {
+        history.push(`/products/edit/${id}`)
+        window.location.reload()
+    }
+
+    console.log(products)
     console.log(products)
 
     return (
@@ -44,7 +54,8 @@ const ListProducts = () => {
                                 name={product.name}
                                 price={product.price}     
                                 id={product._id} 
-                                onRemoveProduct={handleRemoveProduct}                     
+                                onRemoveProduct={handleRemoveProduct}  
+                                onEditProduct={handleEditProduct}                   
                             />
                         </Grid>
                     ))
