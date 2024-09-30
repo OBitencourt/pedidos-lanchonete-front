@@ -20,6 +20,17 @@ const ListCustomers = () => {
             })
     }, [])
 
+    const handleRemoveCustomer = id => {
+        axios.delete(`http://localhost:8080/lanchonete/customers/${id}`)
+            .then(response => {
+                console.log('customer deleted successufully', response)
+
+                const newCustomersState = users.filter(user => user._id !== id)
+                
+                setUsers(newCustomersState)
+            })
+    }
+
     return (
         <>
             <Grid container>
@@ -32,6 +43,7 @@ const ListCustomers = () => {
                                 email={user.email}
                                 tel={user.tel}
                                 adress={user.adress}
+                                onRemoveCustomer={handleRemoveCustomer}
                             />
                         </Grid>
                     ))
