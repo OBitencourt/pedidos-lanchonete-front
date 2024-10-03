@@ -13,7 +13,8 @@ const OrdersCard = ({
     produtos,
     status,
     onRemoveOrder,
-    id
+    id,
+    onEditOrder
 }) => {
 
   const [open, setOpen] = useState(false)
@@ -25,6 +26,10 @@ const OrdersCard = ({
   const handleConfirmButton = id => {
     onRemoveOrder(id)
     handleToggleModal()
+  }
+
+  const handleEditOrder = id => {
+    onEditOrder(id)
   }
 
   return (
@@ -54,7 +59,10 @@ const OrdersCard = ({
           >
             Delete Order
           </Button>
-          <Button size="small">Edit Status</Button>
+          <Button 
+            size="small"
+            onClick={() => handleEditOrder(id)}
+          >Edit Status</Button>
         </CardActions>
       </Card>
       <ModalConfirm 

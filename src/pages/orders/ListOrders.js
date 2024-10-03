@@ -5,10 +5,11 @@ import axios from 'axios';
 import { useEffect , useState} from 'react';
 import OrdersCard from '../../components/OrdersCard';
 
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const ListOrders = () => {
 
+    const history = useHistory()
     const [orders, setOrders] = useState([])
         
 
@@ -34,6 +35,11 @@ const ListOrders = () => {
             })
     }
 
+    const handleEditOrder = id => {
+        history.push(`/orders/edit/${id}`)
+        window.location.reload()
+    }
+
     
     return (
         <>
@@ -47,6 +53,7 @@ const ListOrders = () => {
                                 produtos={order.produtos}   // Array de produtos
                                 status={order.status}   
                                 onRemoveOrder={handleRemoveOrder}   // Supondo que o pedido tenha um status                           
+                                onEditOrder={handleEditOrder}
                             />
                         </Grid>
                     ))

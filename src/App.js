@@ -20,12 +20,18 @@ import AddCustomer from './pages/customers/AddCustomer'
 import EditCustomer from './pages/customers/EditCustomer';
 
 import ListOrders from './pages/orders/ListOrders';
+import EditOrder from './pages/orders/EditOrder'
 
 const App = () => {
   return (
     <>
       <Router>
         <Switch>
+          <Route path="/orders/edit/:id">
+            <TemplateDefault>
+              <TemplatePage title='Edit Order' Component={EditOrder} />
+            </TemplateDefault>
+          </Route>
 
           <Route path="/orders">
             <TemplateDefault>
