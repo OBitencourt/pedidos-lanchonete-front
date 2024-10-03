@@ -17,22 +17,22 @@ const ListOrders = () => {
         axios.get('http://localhost:8080/lanchonete/orders')
             .then(response => {
                 const orders = response.data
-
+                console.log(orders)
                 setOrders(orders)          
             })
     }, [])
 
     
+    const handleRemoveOrder = id => {
+        axios.delete(`http://localhost:8080/lanchonete/orders/${id}`)
+            .then(response => {
+                console.log('order deleted successufully', response)
 
-    /*orders.map((order) => {
+                const newOrdersState = orders.filter(order => order._id !== id)
 
-        setClienteId(order.clienteId)
-        setProducts(order.produtos)
-
-        
-
-        return console.log(order.clienteId)
-    })*/
+                setOrders(newOrdersState)
+            })
+    }
 
     
     return (
@@ -42,10 +42,11 @@ const ListOrders = () => {
                     orders.map((order) => (
                         <Grid item>
                             <OrdersCard  
-                                sx={{mr: 3}}
+                                id={order._id}
                                 clienteId={order.clienteId} // Supondo que clienteId seja um objeto
                                 produtos={order.produtos}   // Array de produtos
-                                status={order.status}        // Supondo que o pedido tenha um status                           
+                                status={order.status}   
+                                onRemoveOrder={handleRemoveOrder}   // Supondo que o pedido tenha um status                           
                             />
                         </Grid>
                     ))
